@@ -4,7 +4,8 @@ import "gorm.io/gorm"
 
 type Student struct {
 	gorm.Model
-	Name  string `json:"name"`
-	Age   int    `json:"age"`
-	Grade int    `json:"grade"`
+	Name  string `gorm:"column:name"  json:"name"`
+	Age   int    `gorm:"column:age"   json:"age"`
+	Class int    `gorm:"column:class" json:"class"`
+	Email string `gorm:"column:email" json:"email"`
 }

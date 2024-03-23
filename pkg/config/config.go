@@ -8,11 +8,12 @@ import (
 )
 
 type Config struct {
-	ServerPort  string `env:"SERVER_PORT" envDefault:"9090" json:"server_port"`
-	DSN         string `env:"DSN" envDefault:"postgres://postgres:postgres@localhost:5435/bootcamp?sslmode=disable" json:"dsn"`
-	AppName     string `env:"APP_NAME" envDefault:"CRUD" json:"app_name"`
-	Environment string `env:"ENVIRONMENT" envDefault:"development" json:"environment"`
-	APIKey      string `env:"API_KEY" envDefault:"" json:"api_key"`
+	ServerPort    string `env:"SERVER_PORT" envDefault:"9090" json:"server_port"`
+	DSN           string `env:"DSN" envDefault:"postgres://postgres:postgres@localhost:5435/bootcamp?sslmode=disable" json:"dsn"`
+	AppName       string `env:"APP_NAME" envDefault:"CRUD" json:"app_name"`
+	Environment   string `env:"ENVIRONMENT" envDefault:"development" json:"environment"`
+	MigrationPath string `env:"MIGRATION_PATH" envDefault:"db/migrations" json:"migration_path"`
+	APIKey        string `env:"API_KEY" envDefault:"" json:"api_key"`
 }
 
 var cfg *Config
