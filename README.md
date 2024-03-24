@@ -15,6 +15,7 @@ Targets:
   dc-down                        dc-down stops the running dependencies
   build                          build builds the server binary
   run                            run starts the server
+  test                           test runs the tests
   check-lint                     check-lint checks whether golangci-lint is installed
   lint                           lint runs the linter
   build-migration                build-migration builds the migration binary

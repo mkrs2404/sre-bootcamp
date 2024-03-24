@@ -21,6 +21,9 @@ build: ## build builds the server binary
 run: build ## run starts the server
 	./server
 
+test: ## test runs the tests
+	go test -v ./...
+
 check-lint: ## check-lint checks whether golangci-lint is installed
 	@which golangci-lint || echo "Install golangci-lint from https://golangci-lint.run/usage/install/#local-installation"
 
