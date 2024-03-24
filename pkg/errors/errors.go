@@ -6,6 +6,12 @@ import (
 	"github.com/pkg/errors"
 )
 
+var (
+	ErrEmailAlreadyExists = errors.New("email already exists")
+	ErrInvalidID          = errors.New("invalid id")
+	ErrNotFound           = errors.New("not found")
+)
+
 // StatusCode extracts the HTTP status code from an error.
 func StatusCode(err error) int {
 	// Check if the error is an HTTP error

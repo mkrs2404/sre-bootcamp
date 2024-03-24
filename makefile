@@ -18,6 +18,9 @@ dc-down: ## dc-down stops the running dependencies
 build: ## build builds the server binary
 	go build -o server cmd/server/main.go
 
+run: build ## run starts the server
+	./server
+
 check-lint: ## check-lint checks whether golangci-lint is installed
 	@which golangci-lint || echo "Install golangci-lint from https://golangci-lint.run/usage/install/#local-installation"
 

@@ -14,7 +14,9 @@ type DB struct {
 
 func Connect(cfg config.Config) (*DB, error) {
 	dsn := cfg.DSN
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+		TranslateError: true,
+	})
 	if err != nil {
 		return nil, errors.New("error connecting to database")
 	}
