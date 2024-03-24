@@ -140,6 +140,40 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Check API Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/health",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Server Deep health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/healthz",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"healthz"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
