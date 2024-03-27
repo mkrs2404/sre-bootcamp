@@ -14,7 +14,9 @@ Targets:
   dc-up                          dc-up starts the dependencies in the background
   dc-down                        dc-down stops the running dependencies
   build                          build builds the server binary
+  build-app                      build-app builds the app docker image
   run                            run starts the server
+  run-app                        run-app starts the app container on port 9090
   test                           test runs the tests
   check-lint                     check-lint checks whether golangci-lint is installed
   lint                           lint runs the linter

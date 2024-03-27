@@ -18,8 +18,14 @@ dc-down: ## dc-down stops the running dependencies
 build: ## build builds the server binary
 	go build -o server cmd/server/main.go
 
+build-app: ## build-app builds the app docker image
+	docker build -t app .
+
 run: build ## run starts the server
 	./server
+
+run-app: ## run-app starts the app container on port 9090
+	docker run --env-file dockerapp.env -p 9090:9090 app
 
 test: ## test runs the tests
 	go test -v ./...

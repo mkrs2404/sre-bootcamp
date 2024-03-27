@@ -25,4 +25,5 @@ server
 go.work
 
 .env
+dockerapp.env
 .DS_*
