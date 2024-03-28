@@ -48,4 +48,10 @@ migrate-down: build-migration ## migrate-down runs the down migration. You can o
 force-migrate: build-migration ## force-migrate force migrates a schema version. It requires a version to be passed like: make force-migrate version=1
 	FORCE_VERSION=$(version) ./migration
 
+docker-build-migration: ## docker-build-migration builds the migration docker image
+	docker build -t migration -f Dockerfile.migration .
+
+docker-migrate: docker-build-migration ## docker-migrate runs the migration docker container
+	docker run --env-file migration.env migration
+
 

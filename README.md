@@ -24,18 +24,34 @@ Targets:
   migrate                        migrate runs the up migration
   migrate-down                   migrate-down runs the down migration. You can optionally pass the number of steps to rollback like: make migrate-down steps=1
   force-migrate                  force-migrate force migrates a schema version. It requires a version to be passed like: make force-migrate version=1
+  docker-build-migration         docker-build-migration builds the migration docker image
+  docker-migrate                 docker-migrate runs the migration docker container
 ```
 
 - Clone the repo.
   
-- `make dc-up` sets up the local dependencies. Make sure docker is installed on your system
+- `make dc-up` sets up the local dependencies. Make sure docker is installed on your system.
 
-- Create a `.env` file in the root of this repo and copy all the keys from `.env.default`. Add suitable values for your environment
+- Create a `.env` file in the root of this repo and copy all the keys from `.env.default`. Add suitable values for your environment.
 
-- Once the dependencies are up and running, run the database migration using `make migrate`. Check `make help` for more info on force migration and rollback
+- Once the dependencies are up and running, run the database migration using `make migrate`. Check `make help` for more info on force migration and rollback.
 
 - Use `make run` to run the API server.
 
-- Import the `Student API.postman_collection.json` file in Postman to use the APIs
+- Import the `Student API.postman_collection.json` file in Postman to use the APIs.
 
 
+### Local Docker Setup
+
+- Clone the repo.
+  
+- `make dc-up` sets up the local dependencies. Make sure docker is installed on your system.
+  
+- Create a `dockerapp.env` file in the root of this repo and copy all the keys from `.env.default`. Add suitable values for your environment.
+  - Note : Use `host.docker.internal` instead of `localhost` for hostname in the dependencies.
+
+- Once the dependencies are up and running, run the database migration using `make docker-migrate`.
+
+- Use `make run-app` to start the API server in a container.
+
+- Import the `Student API.postman_collection.json` file in Postman to use the APIs.
