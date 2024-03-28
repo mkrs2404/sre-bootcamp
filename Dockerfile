@@ -7,7 +7,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/go-build make build
 
 # Run
-FROM ubuntu
+FROM ubuntu:22.04
 WORKDIR /app
 COPY --from=builder /src/server /app/server
 ENTRYPOINT ["/app/server"]

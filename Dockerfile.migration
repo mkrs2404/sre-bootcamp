@@ -7,7 +7,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/go-build make build-migration
 
 # Run
-FROM ubuntu
+FROM ubuntu:22.04
 WORKDIR /app
 COPY --from=builder /src/migration /app/migration
 COPY --from=builder /src/db/migrations /app/db/migrations
