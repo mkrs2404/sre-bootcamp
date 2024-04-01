@@ -24,7 +24,7 @@ build-app: ## build-app builds the app docker image
 run: build ## run starts the server
 	./server
 
-run-app: ## run-app starts the app container on port 9090
+run-app: build-app docker-migrate ## run-app starts the app container on port 9090
 	docker run --env-file dockerapp.env -p 9090:9090 app
 
 test: ## test runs the tests
@@ -54,4 +54,10 @@ docker-build-migration: ## docker-build-migration builds the migration docker im
 docker-migrate: docker-build-migration ## docker-migrate runs the migration docker container
 	docker run --env-file migration.env migration
 
+docker-migrate-down: docker-build-migration ## docker-migrate-down runs the down migration in the migration container. You can optionally pass the number of steps to rollback like: make docker-migrate-down steps=1
+	@if [ -z "$(steps)" ]; then docker run --env-file migration.env migration --rollback; else docker run --env-file migration.env migration --rollback --steps=$(steps); fi
+
+local-setup: build-app dc-up docker-build-migration docker-migrate ## local-setup sets up the local environment in docker
+
+local-teardown: dc-down ## local-teardown tears down the local environment in docker
 

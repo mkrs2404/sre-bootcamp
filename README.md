@@ -2,11 +2,17 @@
 
 This is a REST API server for CRUD operations on Students. The repo is used as the main service in One2N's [SRE Bootcamp](https://playbook.one2n.in/sre-bootcamp/sre-bootcamp-exercises)
 
+### Requirements
+
+- Docker - https://docs.docker.com/get-docker
+- Docker Compose - https://docs.docker.com/compose/install
+- Make - https://askubuntu.com/questions/161104/how-do-i-install-make
+
 ### Local Setup
 
 Use `make` to view all the available commands
 
-```bash
+```zsh
 ❯ make
 Usage: make <target>
 Targets:
@@ -26,32 +32,25 @@ Targets:
   force-migrate                  force-migrate force migrates a schema version. It requires a version to be passed like: make force-migrate version=1
   docker-build-migration         docker-build-migration builds the migration docker image
   docker-migrate                 docker-migrate runs the migration docker container
+  docker-migrate-down            docker-migrate-down runs the down migration in the migration container. You can optionally pass the number of steps to rollback like: make docker-migrate-down steps=1
+  local-setup                    local-setup sets up the local environment in docker
+  local-teardown                 local-teardown tears down the local environment in docker
 ```
 
 - Clone the repo.
-  
-- `make dc-up` sets up the local dependencies. Make sure docker is installed on your system.
 
-- Create a `.env` file in the root of this repo and copy all the keys from `.env.default`. Add suitable values for your environment.
-
-- Once the dependencies are up and running, run the database migration using `make migrate`. Check `make help` for more info on force migration and rollback.
-
-- Use `make run` to run the API server.
-
-- Import the `Student API.postman_collection.json` file in Postman to use the APIs.
-
-
-### Local Docker Setup
-
-- Clone the repo.
-  
-- `make dc-up` sets up the local dependencies. Make sure docker is installed on your system.
-  
 - Create a `dockerapp.env` file in the root of this repo and copy all the keys from `.env.default`. Add suitable values for your environment.
-  - Note : Use `host.docker.internal` instead of `localhost` for hostname in the dependencies.
 
-- Once the dependencies are up and running, run the database migration using `make docker-migrate`.
-
-- Use `make run-app` to start the API server in a container.
+- Use `make local-setup` to run the app along with its dependencies in docker.
 
 - Import the `Student API.postman_collection.json` file in Postman to use the APIs.
+
+### Running Migration
+
+- Create a `migration.env` file in the root of this repo. Add the following variables:
+  - DSN=<YOUR DSN>
+  - ENVIRONMENT=dev
+  - MIGRATION_PATH=db/migrations
+  - Note : You might need to use `host.docker.internal` as your hostname in the DSN for certain environments (e.g: macOS)
+
+- Use `make docker-migrate` and `make docker-migrate-down` for up and down migrations. You can check for more details on these commands by hitting `make`.
