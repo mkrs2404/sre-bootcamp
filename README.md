@@ -39,7 +39,7 @@ Targets:
 
 - Clone the repo.
 
-- Create a `dockerapp.env` file in the root of this repo and copy all the keys from `.env.default`. Add suitable values for your environment.
+- Create a `.env` file in the root of this repo and copy all the keys from `.env.default`. Add suitable values for your environment.
 
 - Use `make local-setup` to run the app along with its dependencies in docker.
 
@@ -51,6 +51,6 @@ Targets:
   - DSN=<YOUR DSN>
   - ENVIRONMENT=dev
   - MIGRATION_PATH=db/migrations
-  - Note : You might need to use `host.docker.internal` as your hostname in the DSN for certain environments (e.g: macOS)
+  - *Note : You might need to use `host.docker.internal` as your hostname in the DSN for certain environments (e.g: macOS, windows)*
 
 - Use `make docker-migrate` and `make docker-migrate-down` for up and down migrations. You can check for more details on these commands by hitting `make`.
